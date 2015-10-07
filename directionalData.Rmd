@@ -83,7 +83,7 @@ plot(fisherB1c, cex=1.5, axes=TRUE,
  
  
 ## Plot of Human Data
-![](https://github.com/presnell/DirectionalDataSlides/blob/master/Pictures/Gray93.png)
+![](https://github.com/presnell/DirectionalDataSlides/blob/master/Pictures/vertebraeOnSphere.png?raw=true)
 
 
 ## Butterfly Migrations
