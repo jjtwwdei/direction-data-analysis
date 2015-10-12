@@ -1,11 +1,11 @@
 # Analysis of Directional Data
-***
+ 
 # LaTeX Header
-***
+ 
 # Introduction
-***
+ 
 ## Examples
-***
+ 
 Wish to analyze data in which response is a “direction”:
 
   * 2d directional data are called *circular* data
@@ -14,7 +14,7 @@ Wish to analyze data in which response is a “direction”:
   * “directional” data may also arise in higher dimensions
   
 ## Wind Directions
-***
+ 
 * Recorded at Col de la Roa, Italian Alps
 * n = 310 (first 40 listed below)
 * Radians, clockwise from north
@@ -51,7 +51,7 @@ ticks.circular(circular(seq(0, (15/8)*pi, pi/8)),
 
 
 ## Arrival Times at an ICU
-***
+ 
 * 24-hour clock times (format `hrs.mins`)
 * n = 254 (first 32 listed below)
 * Source: Cox & Lewis (1966); also Fisher (1993) and R package `circular`
@@ -74,7 +74,7 @@ plot(fisherB1c, cex=1.5, axes=TRUE,
 ```
 
 ## Primate Vertebrae
-***
+ 
 
 * Orientation of left superior facet of last lumbar vertebra in humans, gorillas, and chimpanzees
 * Source: Keifer (2005 UF Anthropology MA Thesis)
@@ -87,7 +87,7 @@ plot(fisherB1c, cex=1.5, axes=TRUE,
 
 
 ## Butterfly Migrations
-***
+ 
 * Direction of travel observed for 2649 migrating butterflies in Florida
 * Source: Thomas J Walker, University of Florida, Dept of Entomology and Nematology
 * Other variables:
@@ -102,34 +102,34 @@ plot(fisherB1c, cex=1.5, axes=TRUE,
     + temperature
     
 ## Why is the Analysis of Directional Data Different?
-***
+ 
 * First three observations from the wind directions data: src_R{paste(round(wind[1:3], 2), collapse=”, “)}
 * The mean of these three numbers is src_R{round(mean(wind[1:3]), 2)} {{{results(`2.47`)}}}
 * What do you think?
 
 
 # Graphical Display of Directional Data
-***
+ 
 
 ## Graphical Display of Circular Data (in R)
-***
+ 
 
 * Have already seen simple dot plots for circular data, e.g., for the wind data:
 
 
 ## Graphical Display of Circular Data (in R) (ctd)
-***
+ 
 * and for the ICU data:
 
 * and one more ...
 
 ## Circular Histograms
-***
+ 
 * [Circular histograms](https://www.google.com/search?q=R+circular+histogram) exist (see Fisher and Mardia and Jupp) but is there a ready-made function in R?
 
 
 ## Rose Diagrams
-***
+ 
 * Invented by [Florence Nightingale](https://en.wikipedia.org/wiki/Florence_Nightingale) (elected first female member of the Royals Statistical Society in 1859; honorary member of ASA)
 * [Nightingale’s rose in R](https://github.com/jennybc/r-graph-catalog/tree/master/figures/fig05-14_nightingale-data) (see also this [post](http://www.r-bloggers.com/going-beyond-florence-nightingales-data-diagram-did-flo-blow-it-with-wedges/) and the [R graph catalog](http://shiny.stat.ubc.ca/r-graph-catalog/))
 * Note that radii of segments are proportional to square root of the frequencies (counts), so that areas are proportional to frequencies. Is this the right thing to do?
@@ -138,7 +138,7 @@ plot(fisherB1c, cex=1.5, axes=TRUE,
     + the choice of starting point for the bins
 
 ## Adding a Rose Diagram to the Plot of Wind Directions
-***
+ 
 
 ```{r eval=FALSE}
 rose.diag(windc, bins=16, col="darkgrey",
@@ -147,13 +147,13 @@ rose.diag(windc, bins=16, col="darkgrey",
 ```
 
 ## Changing the Binwidth
-***
+ 
 ### Fewer/Wider Bins
 
 ### Narrow Bins
 
 ## Changing the Radii
-***
+ 
 * I think that the default “radii proportional to counts” is generally best, but this is not always obvious. The scale certainly makes a big difference however.
 ```{r eval=FALSE}
 rose.diag(windc, bins=16, col="darkgrey",
@@ -164,7 +164,7 @@ rose.diag(windc, bins=16, col="darkgrey",
 ```
 
 ## Kernel Density Estimates
-***
+ 
 ```{r eval=FALSE}
 lines(density.circular(windc, bw=40), lwd=2, lty=1)
 Kernel Density Estimates
@@ -172,13 +172,13 @@ Kernel Density Estimates
 
 
 ## Spherical Data
-***
+ 
 * Are there any canned routines for plotting spherical data in R?
 
 # Basic Summary Statistics
-***
+ 
 ## Mean Direction and Mean Resultant Length
-***
+ 
 * First three observations from the wind directions data:
 * resultant (sum of direction vectors): (src_R{round(xsum, 3)}, src_R{round(ysum, 3)})
 * mean vector: \((\bar{x}, \bar{y}) = \) (src_R{round(xbar, 3)}, src_R{round(ybar, 3)})
@@ -188,12 +188,12 @@ Kernel Density Estimates
 * \(˜{θ} = \) src_R{round(meanDirectionRadians, 3)}
 
 ## plot
-***
+ 
 
 # Aside: Generating from the Uniform Distribution on the Sphere
-***
+ 
 ## Generating Random Points on the Sphere
-***
+ 
 
 * Wish to generate a random “direction” in d-dimensions; i.e., an observation from the uniform distribution in the \(d-1\) sphere.
 * Usual way: let X ∼ N_d(0, I) and return U = X/||X||.
@@ -208,7 +208,7 @@ Kernel Density Estimates
       + Curse of dimensionality
         
 ## Code for Timing Results
-***
+ 
 
 ```{r eval=FALSE}
 runifSphere <- function(n, dimension, method=c("norm", "cube", "slownorm")) {
@@ -241,28 +241,28 @@ runifSphere <- function(n, dimension, method=c("norm", "cube", "slownorm")) {
 ```
 
 ## Easy fix for Borel’s paradox in 3-d
-***
+ 
 Take longitude \(φ ∼ U(0,2π)\) independent of latitude \(θ = arcsin(2U-1)\), \(U ∼ U(0,1)\).
 
 # Rotationally Symmetric Distributions
-***
+ 
 ## Comparison of Projected Normal and Langevin Distributions
-***
+ 
 
 One way that we might compare the \(\nlangevin(μ, κ)\) and \(\npn(γ\mu, I)\) distributions by choosing κ and γ to give the same mean resultant lengths and comparing the densities of the cosine of the angle θ between \(U\) and \(μ\).
 
 Of course matching mean resultant lengths is not necessarily the best way to compare these families of distributions.
 
 ## \(d = 2\)
-***
+ 
 
 ![](https://github.com/presnell/DirectionalDataSlides/blob/master/Plots/PNvLvMF2.png?raw=true)
 
 ## \(d = 3\)
-***
+ 
 ![](https://github.com/presnell/DirectionalDataSlides/blob/master/Plots/PNvLvMF3.png?raw=true)
 
 ## \(d = 4\)
-***
+ 
 
 ![](https://github.com/presnell/DirectionalDataSlides/blob/master/Plots/PNvLvMF4.png?raw=true)
